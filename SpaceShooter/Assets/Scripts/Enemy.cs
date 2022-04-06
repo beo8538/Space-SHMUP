@@ -70,4 +70,21 @@ public class Enemy : MonoBehaviour
 
     } // end Move()
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject otherGO = collision.gameObject;
+
+        if(otherGO.tag == "ProjectileHero")
+        {
+            Debug.Log("Enemy hit by projectile " + otherGO.name);
+            Destroy(otherGO); //destroy projectile
+            GameManager.GM.UpdateScore(score); //add to score
+            Destroy(gameObject); //destroy enemy
+        }
+        else
+        {
+            Debug.Log("Enemy hit by projectile " + otherGO.name);
+        }
+    }//end OnCollisionEnter
+
 }
