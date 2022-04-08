@@ -2,7 +2,7 @@
  * Created by: Betzaida Ortiz Rivas
  * Date Created: 4/6/2022
  * 
- * Last Edited by: 
+ * Last Edited by: 4/8/2022
  * Last Edited:
  * 
  * Description: Create a pool of object for reuse
@@ -34,8 +34,8 @@ public class ObjectPool : MonoBehaviour
     private Queue<GameObject> projectiles = new Queue<GameObject>(); //new queue of projectiles
 
     [Header("POOL Settings")]
-    public GameObject projectilePrefab;
-    public int poolStartSize = 5;
+    public GameObject projectilePrefab; //projectile prefab
+    public int poolStartSize = 5; //starting size of pool
 
     /**Methods**/
     private void Awake()
@@ -46,8 +46,35 @@ public class ObjectPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        for(int i = 0; i < poolStartSize; i++)
+        {
+            GameObject projectileGO = Instantiate(projectilePrefab); //create prefab instance
+            projectiles.Enqueue(projectileGO); //add to queue
+            projectileGO.SetActive(false); //hide projectile
+        } //end
+    }//end Start()
+
+    public GameObject GetObject()
+    {
+        //If there are objects in the pool
+        if (projectiles.Count > 0)
+        {
+            GameObject gObject = projectiles.Dequeue(); //remove from queue
+            gObject.SetActive(true); //enable
+            return gObject; // retunr object
+        }
+        else
+        {
+            Debug.LogWarning("Out of objects, reloading...");
+            return null; //returns null
+        }//end
+    }//end GetObject()
+
+    public void ReturnObject(GameObject gObject)
+    {
+        projectiles.Enqueue(gObject); //add back to queue
+        gObject.SetActive(false); //disable
+    } //end ReturnObject()
 
     // Update is called once per frame
     void Update()

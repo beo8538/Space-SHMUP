@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public string defaultEndMessage = "Game Over";//the end screen message, depends on winning outcome
-    public string looseMessage = "You Loose"; //Message if player looses
+    public string loseMessage = "You Lose"; //Message if player looses
     public string winMessage = "You Win"; //Message if player wins
     [HideInInspector] public string endMsg;//the end screen message, depends on winning outcome
 
@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
             case GameState.LostLevel:
                 currentLives = defaultsLives; //reset current lives to default (inital) value
 
-                endMsg = looseMessage; //set loose message
+                endMsg = loseMessage; //set loose message
                 GameOver(); //move to game over
                 break;
 

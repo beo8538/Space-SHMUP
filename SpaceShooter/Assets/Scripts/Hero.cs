@@ -39,6 +39,8 @@ public class Hero : MonoBehaviour
 
     GameManager gm; //reference to game manager
 
+    ObjectPool pool; //reference to Object Pool
+
     [Header("Ship Movement")]
     public float speed = 10;
     public float rollMult = -45;
@@ -49,7 +51,6 @@ public class Hero : MonoBehaviour
     [Space(10)]
 
     [Header("Projectile Settings")]
-    public GameObject projectilePrefab;
     public float projectileSpeed = 40;
 
 
@@ -92,6 +93,8 @@ public class Hero : MonoBehaviour
     private void Start()
     {
         gm = GameManager.GM; //find the game manager
+        pool = ObjectPool.POOL; //find the game manager
+
     }//end Start()
 
 
@@ -150,10 +153,15 @@ public class Hero : MonoBehaviour
 
     void FireProjectile()
     {
-        GameObject projGo = Instantiate<GameObject>(projectilePrefab);
-        projGo.transform.position = transform.position;
-        Rigidbody RB = projGo.GetComponent<Rigidbody>();
-        RB.velocity = Vector3.up * projectileSpeed;
+        GameObject projGo = pool.GetObject(); //Get object from pool
+
+        //if there is a projectile object
+        if (projGo != null)
+        {
+            projGo.transform.position = transform.position;
+            Rigidbody RB = projGo.GetComponent<Rigidbody>();
+            RB.velocity = Vector3.up * projectileSpeed;
+        }//end if-statement
     }
 
 }
