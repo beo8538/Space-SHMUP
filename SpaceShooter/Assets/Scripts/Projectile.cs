@@ -3,7 +3,7 @@
  * Date Created: 4/6/2022
  * 
  * Last Edited by: 
- * Last Edited:
+ * Last Edited: 4/8/2022
  * 
  * Description: Behaviours for the projectile
 ****/
@@ -28,7 +28,8 @@ public class Projectile : MonoBehaviour
     {
         if (bndCheck.offUp)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false); //set the projetile to deactivate and retunr to pool
+            bndCheck.offUp = false; //reset the BoundsCheck offUp boolean
         }
     }
 }

@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Betzaida Ortiz Rivas
- * Last Edited: 4/5/2022
+ * Last Edited: 4/8/2022
  * 
  * Description: Hero ship controller
 ****/
@@ -162,6 +162,6 @@ public class Hero : MonoBehaviour
             Rigidbody RB = projGo.GetComponent<Rigidbody>();
             RB.velocity = Vector3.up * projectileSpeed;
         }//end if-statement
-    }
+    } //end FireProjectile()
 
 }
