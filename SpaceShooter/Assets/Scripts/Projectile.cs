@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
     {
         if (bndCheck.offUp)
         {
-            gameObject.SetActive(false); //set the projetile to deactivate and retunr to pool
+            gameObject.SetActive(false); //set the projetile to deactivate and return to pool
             bndCheck.offUp = false; //reset the BoundsCheck offUp boolean
         }
     }

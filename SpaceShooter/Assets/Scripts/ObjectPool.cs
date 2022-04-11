@@ -61,7 +61,7 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject gObject = projectiles.Dequeue(); //remove from queue
             gObject.SetActive(true); //enable
-            return gObject; // retunr object
+            return gObject; // return object
         }
         else
         {

@@ -5,7 +5,7 @@
  * Last Edited by: 
  * Last Edited:
  * 
- * Description: Behaviours for the projectile
+ * Description: Returns objects to pool
 ****/
 
 using System.Collections;
@@ -23,12 +23,6 @@ public class PoolReturn : MonoBehaviour
         pool = ObjectPool.POOL; // find the game manager
 
     }//end Start()
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnDisable()
     {
